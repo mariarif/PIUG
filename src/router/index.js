@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import StartPageView from "../views/StartPageView.vue";
-import ShopPageView from "../views/ShopPageView.vue";
+import AboutPageView from "../views/AboutPageView.vue"
+import BrowsePageView from "../views/BrowsePageView.vue";
 import HomePageView from "../views/HomePageView.vue";
 
 
@@ -8,14 +8,15 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/start",
-      name: "start",
-      component: StartPageView,
+      path: "/about",
+      name: "about",
+      component: AboutPageView,
     },
     {
-      path: "/shop",
-      name: "shop",
-      component: ShopPageView,
+      path: "/browse/:type",
+      name: "browse",
+      params: true,
+      component: BrowsePageView,
     },
     {
       path: "/home",

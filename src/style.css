@@ -1,36 +1,40 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
+  /* font-family: 'Clicker Script', cursive; */
+  /* font-family: 'Josefin Slab', serif; */
+  font-family: 'Coustard', serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgb(236,69,6);
-  background-color: rgb(193,147,132);
+  color: rgb(117, 37, 7);
+  background-color: rgb(255, 245, 239);
+  /* background-image: linear-gradient(0deg, rgba(251, 192, 153, 1) 15%, rgba(251, 207, 178, 1) 35%, rgba(251, 222, 203, 1) 50%, rgba(251, 237, 228, 1) 65%, rgba(251, 252, 253, 1) 85%, rgba(251, 255, 255, 1) 100%); */
 
-  font-synthesis: none;
+  /* font-synthesis: none; */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
 }
+ .root{
+  --nav-bg-color-grey:rgb(98, 98, 98);
+  --nax-box-shadow-color: rgb(0, 0, 0);
+ }
+
 
 a {
+  font-family: 'Mulish', sans-serif;
   font-weight: 500;
-  color:rgb(243,108,36);
+  color: #ffffff;
   text-decoration: inherit;
-}
-a:hover {
-  color:  rgb(236,69,6);
 }
 
-a {
-  font-weight: 500;
-  color:#ffffff;
-  text-decoration: inherit;
-}
 a:hover {
-  color:  #dfe7e4;
+  color: #dfe7e4;
 }
 
 body {
@@ -40,6 +44,7 @@ body {
   align-self: center;
   min-width: 500px;
   min-height: 100vh;
+  /* background-image: linear-gradient(0deg, rgba(251, 237, 228, 1) 50%, rgba(255, 255, 255, 1) 100%); */
   /* width:100vh;
   height:100vh; */
 }
@@ -56,16 +61,18 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color:rgb(243,108,36);
-  box-shadow: 2px 2px 4px rgb(251, 192, 153);
+  background-color: rgb(243, 108, 36);
+  box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.5), 0 2px 4px 1px rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #ffffff;
- 
-  box-shadow: 2px 2px 4px #ffffff;
+  color: white;
+  box-shadow: 0 4px 6px 1px rgba(255, 255, 255, 0.9), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -79,19 +86,26 @@ button:focus-visible {
   /* padding: 2rem; */
   align-items: center;
   text-align: center;
+  background-image: url("./assets/images/booksforall-white.png");
+  background-size: 15%;
+  background-repeat: space;
+  background-color: rgb(255, 245, 239);
+  
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #ffffff;
-    background-color: #c4ccea;
+   background-color: rgb(255, 245, 239);
+  background-image: linear-gradient(0deg, rgba(251, 192, 153, 1) 15%, rgba(251, 207, 178, 1) 35%, rgba(251, 222, 203, 1) 50%, rgba(251, 237, 228, 1) 65%, rgba(251, 252, 253, 1) 85%, rgba(251, 255, 255, 1) 100%);
+
   }
+
   a:hover {
     color: #ffffff;
   }
+
   button {
-    background-color:#c4ccea;
+    background-color: rgba(251, 237, 228);
   }
 }
-
-

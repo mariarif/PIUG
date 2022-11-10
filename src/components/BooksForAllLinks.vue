@@ -11,8 +11,8 @@ const count = ref(0)
 <template>
   
   <div class="Start">
-    <div><img src="../assets/images/stackofbooks.jpg" class="Card" />
-    </div>
+    <!-- <div><img src="../assets/images/stackofbooks.jpg" class="Card" />
+    </div> -->
     <div>
       <p>
         Check out our
@@ -23,7 +23,7 @@ const count = ref(0)
       </p>
     </div>
 
-    <RouterLink to="/shop"><button>Click here to start shopping!</button></RouterLink>
+    <RouterLink to="/shop"><button>Click here to start browsing!</button></RouterLink>
 
 
   </div>
@@ -59,7 +59,10 @@ const count = ref(0)
 .read-the-docs {
   color: #888;
 }
-
+a{
+color:white;
+text-decoration: none;
+}
 .Facebook {
   background-color: #3b5998;
   /* border-radius: 5px; */

@@ -1,49 +1,67 @@
 <script setup>
 import { RouterView } from "vue-router";
 import Navbar from "./components/Navbar.vue";
+import FooterCentered from "./components/FooterCentered.vue";
+// let img=new Image();
+// img.src= "./assets/images/stackofbooks.jpg";
+// img.onload = () => {
+//        let height = image.height;
+//        let width = image.width;
+//        return image.src + " this is width " + width + " and this is height " + height
+//  }
+
 </script>
 
 <template>
-  <div>
-
-    <img src="./assets/images/stackofbooks.jpg" class="Card" />
+  <div class="app-content">
     <div class="content">
-      <Navbar />
-      <div style="position: relative;top: 700;
-  left: 1000;">
+      <div class="app-navbar">
+        <Navbar />
+      </div>
+      <div style="padding-top:2%; z-index:1;">
         <Router-View />
       </div>
     </div>
   </div>
-
-  <!-- <div class="container position-sticky z-index-sticky top-0">
-    <div class="row">
-      <div class="col-12">
-       
-      </div>
-    </div>
-  </div> -->
+  <div class="divider"></div>
+  <FooterCentered />
 </template>
 <style scoped>
-.content {
-  /* z-index: 5; */
-  padding: 2% 2%;
-  top: 0;
-  left: 0;
+.divider{
+  width:90%;
+  display: inline-flex ;
+  background:  rgb(117, 37, 7);
+  height:4px;
+  
+}
+.app-navbar {
+  padding-bottom: 80px;
+  z-index:10;
 }
 
-.Card {
-  z-index: 0;
+a {
+  color: rgb(117, 37, 7);
+}
+
+.content {
+  position: relative;
+  padding: 2% 2%;
+  
+}
+
+.app-bg {
+  opacity: 0.6;
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
   width: 100%;
-  border: 0 transparent solid;
-  /* background-color: bisque; */
-  /* background-image: url('../assets/images/stackofbooks.jpg'); */
-  background-repeat: no-repeat;
-  background-position: contain;
-  /* background-attachment: fixed; */
-  background-position: center;
+  height: auto;
+
+}
+
+.app-content {
+  overflow: hidden;
+  position: relative;
+  min-height: 1000px;
 }
 </style>
