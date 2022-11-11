@@ -53,7 +53,20 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
+.text-white{
+  color:white;
+  font-family: 'Montserrat', sans-serif;
+}
+.text-orange{
+  font-weight: 600;
+  font-family: 'Coustard', serif;
+  color: rgb(117, 37, 7);
+}
+.text-dark-orange{
+  color:rgb(243, 108, 36);
+  font-family: 'Coustard', serif;
+  font-weight: 800;
+}
 button {
   border-radius: 8px;
   border: 4px solid transparent;
@@ -66,7 +79,24 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-
+.bg-texture{
+  background-image: url(./assets//images/papertexture.png);
+}
+.bg-translucide-white{
+  background-color: rgb(251, 192, 153, 0.2);
+}
+.bg-gradient-light{
+  background-image: linear-gradient(195deg, rgba(251, 192, 153, 1) 10%, rgba(251, 207, 178, 1) 25%, rgba(251, 222, 203, 1) 35%, rgba(251, 237, 228, 1) 55%, rgba(251, 252, 253, 1) 85%, rgba(251, 255, 255, 1) 100%);
+}
+.bg-gradient-light-reverse{
+  background-image: linear-gradient(-195deg, rgba(251, 192, 153, 1) 10%, rgba(251, 207, 178, 1) 25%, rgba(251, 222, 203, 1) 35%, rgba(251, 237, 228, 1) 55%, rgba(251, 252, 253, 1) 85%, rgba(251, 255, 255, 1) 100%);
+}
+.bg-gradient-dark{
+  background-image: linear-gradient(195deg, rgb(243, 108, 36) 0%, rgb(117, 37, 7) 100%);
+}
+.bg-gradient-dark-reverse{
+  background-image: linear-gradient(195deg, rgb(117, 37, 7)  0%, rgb(243, 108, 36) 100%);
+}
 button:hover {
   border-color: #ffffff;
   color: white;

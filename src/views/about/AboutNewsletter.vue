@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted } from "vue";
 //Vue Material Kit 2 components
-import MaterialInput from "@/components/MaterialInput.vue";
-import MaterialButton from "@/components/MaterialButton.vue";
+import MaterialInput from "../../components/MaterialInput.vue";
+import MaterialButton from "../../components/MaterialButton.vue";
 
 // material-input
 import setMaterialInput from "../../assets/js/material-input";
@@ -11,7 +11,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <section class="my-5 pt-5">
+  <section class="my-5 pt-5 bg-gradient-light">
     <div class="container">
       <div class="row">
         <div class="col-md-6 m-auto">
@@ -43,7 +43,7 @@ onMounted(() => {
           <div class="position-relative">
             <img
               class="max-width-50 w-100 position-relative z-index-2"
-              src="@/assets/img/macbook.png"
+              src="../../assets/images/macbook.png"
               alt="image"
             />
           </div>

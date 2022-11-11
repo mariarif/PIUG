@@ -1,11 +1,11 @@
 <script setup>
 // example components
-import DefaultInfoCard from "../../../../examples/cards/infoCards/DefaultInfoCard.vue";
-import CenteredBlogCard from "../../../../examples/cards/blogCards/CenteredBlogCard.vue";
+import DefaultInfoCard from "../../components/DefaultInfoCard.vue";
+import CenteredBlogCard from "../../components/CenteredBlogCard.vue";
 </script>
 <template>
   <section class="py-7">
-    <div class="container">
+    <div class="container bg-gradient-light-reverse">
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="row justify-content-start">

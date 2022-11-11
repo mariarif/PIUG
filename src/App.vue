@@ -2,13 +2,6 @@
 import { RouterView } from "vue-router";
 import Navbar from "./components/Navbar.vue";
 import FooterCentered from "./components/FooterCentered.vue";
-// let img=new Image();
-// img.src= "./assets/images/stackofbooks.jpg";
-// img.onload = () => {
-//        let height = image.height;
-//        let width = image.width;
-//        return image.src + " this is width " + width + " and this is height " + height
-//  }
 
 </script>
 
