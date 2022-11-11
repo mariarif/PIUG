@@ -1,7 +1,11 @@
 <script setup>
+// import Vue from 'vue';
+import Embed from 'v-video-embed';
 import { RouterLink } from 'vue-router';
 import BooksForAllLinks from '../components/BooksForAllLinks.vue';
 import Slider from '../components/Slider.vue'
+
+// Vue.useAttrs(Embed);
 
 var imagesSlider=["src/assets/images/stackofbooks.jpg",
  "src/assets/images/mistborn.png",
@@ -18,6 +22,7 @@ var imagesSlider=["src/assets/images/stackofbooks.jpg",
     </div>
     <div>
       <BooksForAllLinks msg="Books for all" />
+      <video-embed css="embed-responsive-16by9" :params="{autoplay: 1}" src="https://www.youtube.com/watch?v=s4ObxcdXoFE"></video-embed>
     </div>
   </div>
 </template>

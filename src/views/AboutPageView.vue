@@ -5,104 +5,118 @@ import AboutTeam from './about/AboutTeam.vue';
 import AboutInformation from './about/AboutInformation.vue';
 import AboutFeaturing from './about/AboutFeaturing.vue';
 import $ from 'jquery';
-// import { dynamicContentMenu } from '../assets/js/jquery-dynamic-content-menu.js';
-import { onMounted } from 'vue';
+import { useRouter } from "vue-router";
 
-// function initToc() {
-//   var $myToc = $('#toc');
-//   Toc.init($myToc);
-//   $('body').scrollspy({
-//     target: $myNav
-//   });
-// }
-
-// Toc.init({
-//   // The element that the navigation will be created in
-//   $nav: $('#myToc'),
-//   // The element where the search for headings will be limited to
-//   $scope: $(document.body)
-// });
-// initToc();
-
-
-onMounted(() => $(document).ready(function () {
-
-  $("#dinamicTOC").dynamicContentMenu({
-    'selectors': "h1 #TOCitem",
-  });
-
-}));
-</script>
-<!-- <script>
-$(function () {
-  if (!window.jQuery) {
-    alert('jQuery not included!');
+const router = useRouter();
+router.afterEach((to, from) => $(document).ready(function () {
+  console.log("were in about page");
+  if (window.location.href.includes("about")) {
+    $("#dinamicTOC").dynamicContentMenu({
+      'selectors': "h1 #TOCitem",
+    });
   }
-  //Include plugin
-  $("#dinamicTOC").dynamicContentMenu({
-    // 'theme' : "material",
-    'selectors': "h1",//, h2, h3, .h1s",
-    'extendPage': false // do not increase page height
-  });
+}));
+
+window.onscroll = function () { myFunction() };
+
+
+var navbar;
+var sticky;
+
+$(document).ready(function () {
+  // Get the TOC
+  navbar = document.getElementById("dinamicTOC");
+  // Get the offset position of the TOC
+  sticky = navbar.offsetTop;
 });
-</script> -->
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    console.log("table of contents is sticky");
+    navbar.classList.add("sticky")
+  } else {
+    console.log("table of contents is not sticky");
+
+    navbar.classList.remove("sticky");
+  }
+} 
+</script>
 
 <template>
   <header>
-    <!-- <div class="page-header min-vh-75 ">
-      <span class="mask opacity-6"></span>
-      <div class="container bg-gradient-light">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center mx-auto my-auto">
-            <p class="text-black">
-              Work with an amazing <span class="text-black" id="typed"></span>
-            </p>
-            <div id="typed-strings">
-              <h1>team</h1>
-              <h1>design</h1>
-              <h1>tool</h1>
-            </div>
-            <p class="lead mb-4 text-black opacity-8">
-              We’re constantly trying to express ourselves and actualize our
-              dreams. If you have the opportunity to play this game
-            </p>
-            <button type="submit" class="btn bg-white text-dark">
-              Create Account
-            </button>
-            <p class="text-black mb-2 mt-5">Find us on</p>
-            <div class="d-flex justify-content-center">
-              <a href="javascript:;"><i class="fab fa-facebook text-lg text-black me-4">Facebook</i></a>
-              <a href="javascript:;"><i class="fab fa-instagram text-lg text-black me-4">Instagram</i></a>
-              <a href="javascript:;"><i class="fab fa-twitter text-lg text-black me-4">Twitter</i></a>
-              <a href="javascript:;"><i class="fab fa-google-plus text-lg text-black">Google Plus</i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </header>
-  <div class="col-md-1" style="z-index:19;">
-    <!-- plugin menu here -->
-    <div id="dinamicTOC"></div>
+  <div class="aboutPage">
+    <div  style="z-index:19;">
+      <!-- plugin menu here -->
+      <div id="dinamicTOC"></div>
+    </div>
+    <div class="card card-body  mx-3 mx-md-4 mt-n6" style="background-color:transparent; border-color: transparent;">
+      <h1 id="TOCitem">Information</h1>
+      <AboutInformation />
+      <h1 id="TOCitem">Team</h1>
+      <AboutTeam />
+      <h1 id="TOCitem">Featuring</h1>
+      <AboutFeaturing />
+      <h1 id="TOCitem">Newsletter</h1>
+      <AboutNewsletter />
+      <h1 id="TOCitem">Contact Us</h1>
+      <ContactUs />
+    </div>
   </div>
-  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
-    <h1 id="TOCitem">Information</h1>
-    <AboutInformation />
-    <h1 id="TOCitem">Team</h1>
-    <AboutTeam />
-    <h1 id="TOCitem">Featuring</h1>
-    <AboutFeaturing />
-    <h1 id="TOCitem">Newsletter</h1>
-    <AboutNewsletter />
-    <h1 id="TOCitem">Contact Us</h1>
-    <ContactUs />
-  </div>
-
 </template>
 
 <style scoped>
+.dynamicContentMenu {
+  /* max-width: 15%; */
+  /* margin: 0; */
+  width: 100%;
+  height: 100%;
+}
+
+.aboutPage {
+  display: grid;
+  grid-template-columns: 10% 90%;
+}
+
+.aboutPage.card {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.dinamicTOC {
+  position: fixed;
+  padding: 0;
+  margin: o;
+  /* display: block; */
+  /* background-color:rgb(117, 37, 7); */
+  /* min-width: 300px; */
+  width: 100%;
+}
+
+/* 
+.col-md-1 {
+  position: relative;
+  display: block;
+  padding: 0;
+  display: inline-block;
+  background-color: rgba(251, 192, 153, 0.8);
+  width: 100%;
+  border-radius: 8px;
+} */
+
 #TOCitem {
-  margin-top: 3rem;
+  padding: 1.5rem 0;
+  margin:0;
+  color: rgb(117, 37, 7);
+  font-size: 80;
+  font-weight: 600;
+  font-family: 'Coustard', serif;
+  text-decoration: none;
+  text-shadow: 1px 1px 4px #000000;
+  background-color: rgb(251, 192, 153, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 h1,

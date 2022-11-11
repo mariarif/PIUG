@@ -3,7 +3,6 @@ import AboutPageView from "../views/AboutPageView.vue"
 import BrowsePageView from "../views/BrowsePageView.vue";
 import HomePageView from "../views/HomePageView.vue";
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

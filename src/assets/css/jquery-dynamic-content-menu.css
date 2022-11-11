@@ -1,17 +1,17 @@
 :root {
-    --scodColorBlue-500: #2196f3;
-    --scodColorBlue-700: #1976d2;
-    --scodColorIndigo: #3f51b5;
+    --scodColorBlown-500: rgb(243, 108, 36);
+    --scodColorBlown-700: rgb(117, 37, 7);
+    --scodColorBlown: rgb(117, 37, 7, 0.8);
     --scodItemActiveTextColor: #fff;
-    --scodColorGray-300: #e0e0e0;
+    --scodColorOrange-300: rgb(243, 108, 36);
 
-    --fontFamilyRoboto: "Roboto", "Helvetica", "Arial", sans-serif;
-    --fontWeight-500: 500;
+    --fontFamilyMonserrat: 'Montserrat', sans-serif;
+    --fontWeight-500: 800;
     --letterSpacing-002: 0.02857em;
 
     --scodDefaultBoxShadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-    --scodDefaultBorderRadius: 6px;
-    --scodDefaultlinkColor: var(--scodColorIndigo);
+    --scodDefaultBorderRadius: 8px;
+    --scodDefaultlinkColor: var(--scodColorBlown);
     --scodLineHeght-1: 35px;
     --scodLineHeght-2: 30px;
     --scodLineHeght-3: 25px;
@@ -19,46 +19,61 @@
 
 
 /* Themes */
-.scod-theme-material{
-    --mainBoxShadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-    --mainBorder: 1px solid #ccc;
-    --mainBorderRadius: 4px;
+.scod-theme-material {
+    --mainBoxShadow: 0px 1px 3px 3px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    --mainBorder: 1px solid rgba(251, 192, 153, 1);
+    --mainBorderRadius: 8px;
     --mainBackgroundColor: #fff;
-    --linkColor: var(--scodColorBlue-700);
-    --h1FintFamily: var(--fontFamilyRoboto);
+    --linkColor: var(--scodColorBlown-700);
+    --h1FintFamily: var(--fontFamilyMonserrat);
     --h1FontWeight: var(--fontWeight-500);
     --h1LetterSpacing: var(--letterSpacing-002);
-    --h1TextTransform: uppercase;
-    --itemHoverBackgroundColor: var(--scodColorGray-300);
-    --itemActiveBackgroundColor: #0088cc;
+    /* --h1TextTransform: uppercase; */
+    --itemHoverBackgroundColor: var(--scodColorOrange-300);
+    --itemActiveBackgroundColor: var(--scodColorBlown-700);
     --itemActiveTextColor: #fff;
 
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    max-width: 7rem;
+    display: block;
+}
 
+.sticky+.dynamicContentMenu {
+    padding-top: 60px;
+}
 
 /* The Table of Contents container element */
 .dynamicContentMenu {
-    width: 20%;
-    max-height: 90%;
-    overflow: auto;
-    margin-left: 2%;
-    position: fixed;
+    /* display: block; */
+    /* width: 20%; */
+    width: 7rem;
+    /* max-height: 90%; */
+    overflow: hidden;
+    background-color: rgb(251, 192, 153, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* margin-left: 2%; */
+    /* position: fixed; */
     border: var(--mainBorder, 1px solid #ccc);
-    box-shadow: var(--mainBoxShadow, --scodDefaultBoxShadow);
+    /* box-shadow: var(--mainBoxShadow, --scodDefaultBoxShadow); */
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: var(--mainBorderRadius, --scodDefaultBorderRadius);
-    
+
 }
 
-.dynamicContentMenu a{
+.dynamicContentMenu a {
     color: var(--linkColor, --scodDefaultlinkColor) !important;
     /* padding: 10px 0; */
-    
+
 }
+
 /* The Table of Contents is composed of multiple nested unordered lists.  These styles remove the default styling of an unordered list because it is ugly. */
-.dynamicContentMenu ul, .dynamicContentMenu li {
+.dynamicContentMenu ul,
+.dynamicContentMenu li {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -69,7 +84,7 @@
 /* Top level header elements */
 .dynamicContentMenu__header {
     text-indent: 10px;
-    font-family: --fontFamilyRoboto;
+    font-family: --fontFamilyMonserrat;
     text-transform: var(--h1TextTransform, none);
 }
 
@@ -80,7 +95,7 @@
     text-transform: none !important;
 }
 
-.dynamicContentMenu__subheader li{
+.dynamicContentMenu__subheader li {
     line-height: var(--scodLineHeght-2, 30px);
 }
 
@@ -110,7 +125,7 @@
 
 
 /* Common styles */
-.scod-flex-container{
+.scod-flex-container {
     display: flex;
     /* flex-wrap: wrap; */
     -webkit-box-orient: vertical !important;
@@ -118,14 +133,14 @@
     flex-direction: column !important;
 }
 
-.active{
-    background-color: var(--itemActiveBackgroundColor, --scodColorBlue-500);
+.active {
+    background-color: var(--itemActiveBackgroundColor, --scodColorBlown-500);
 }
 
-.active a{
+.active a {
     color: var(--itemActiveTextColor, --scodItemActiveTextColor) !important;
 }
 
-.dynamicContentMenu_hide{
+.dynamicContentMenu_hide {
     display: none;
 }

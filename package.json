@@ -16,6 +16,7 @@
     "pinia": "2.0.14",
     "prismjs": "1.28.0",
     "typed.js": "2.0.12",
+    "v-video-embed": "^1.0.8",
     "vue": "^3.2.37",
     "vue-analytics": "^5.22.1",
     "vue-clipboard3": "2.0.0",

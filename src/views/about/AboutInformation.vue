@@ -4,8 +4,8 @@ import DefaultInfoCard from "../../components/DefaultInfoCard.vue";
 import CenteredBlogCard from "../../components/CenteredBlogCard.vue";
 </script>
 <template>
-  <section class="py-7">
-    <div class="container bg-gradient-light-reverse">
+  <section class="py-7 bg-gradient-light-reverse">
+    <div class="container ">
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="row justify-content-start">

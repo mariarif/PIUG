@@ -3,12 +3,23 @@ import { RouterView } from "vue-router";
 import Navbar from "./components/Navbar.vue";
 import FooterCentered from "./components/FooterCentered.vue";
 
+// window.onscroll=function() {fixTheNavbar()};
+// var navbar=document.getElementById("navbarFix");
+// var sticky=navbar.offsetTop;
+
+// function fixTheNavbar(){
+//   if (window.pageYOffset >= sticky) {
+//     navbar.classList.add("sticky")
+//   } else {
+//     navbar.classList.remove("sticky");
+//   }
+// } 
 </script>
 
 <template>
   <div class="app-content">
     <div class="content">
-      <div class="app-navbar">
+      <div class="app-navbar" >
         <Navbar />
       </div>
       <div style="padding-top:2%; z-index:1;">
@@ -30,6 +41,7 @@ import FooterCentered from "./components/FooterCentered.vue";
 .app-navbar {
   padding-bottom: 80px;
   z-index:10;
+  /* position:fixed; */
 }
 
 a {
