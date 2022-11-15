@@ -1,8 +1,9 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { computed, watch } from 'vue';
-import {useRouter} from "vue-router";
-
+import { ref, reactive, computed, watch } from 'vue';
+import { useRouter } from "vue-router";
+import { getAllBooks } from '../views/browse/getAllBooks';
+import SearchedBookItem from './SearchedBookItem.vue';
 var loc = computed(() => window.location.href);
 
 // function setActiveTab() {
@@ -36,7 +37,21 @@ router.afterEach((to, from) => {
   };
 });
 
+const state = reactive({
+  searchBook: "",
+});
 
+const books = getAllBooks();
+const reactiveBooks = ref(books);
+const resultBooks = computed(() => {
+  return reactiveBooks.value.filter(
+    (book) =>
+    book.title.toLowerCase().includes(state.searchBook.toLowerCase()) ||
+    // book.description.toLowerCase().includes(state.searchBook.toLowerCase()) ||
+    book.author.toLowerCase().includes(state.searchBook.toLowerCase()) ||
+    book.series.name.toLowerCase().includes(state.searchBook.toLowerCase())
+  );
+});
 </script>
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-texture" id="navbarFix" style="z-index:20;">
@@ -92,10 +107,24 @@ router.afterEach((to, from) => {
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li> -->
         <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search for book.." aria-label="Search">
-            <button class="btn my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          <!-- <form class="form-inline my-2 my-lg-0"> -->
+            <div class="searchBookDropdown" style=" width: 100%">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search for book.." aria-label="Search"
+              v-model="state.searchBook">
+            <!-- <button class="btn my-2 my-sm-0" type="submit">Search</button> -->
+
+            <div v-if="state.searchBook.length >= 2" class="searchBookDropdown-content"
+              style="position: absolute; overflow-y: scroll; height: auto">
+              <span v-if="resultBooks && resultBooks.length !== 0" style="padding-left: 2%">{{ resultBooks.length }}
+                search results</span>
+              <span v-else style="padding-left: 2%">No results for "{{ state.searchBook }}"</span>
+              <div style="height: 100%; width: 100%; display: inline-block" v-for="book of resultBooks" :key="book.id">
+                <SearchedBookItem :book="book" :searchBook="state.searchBook">
+                </SearchedBookItem>
+              </div>
+            </div>
+          </div>
+          <!-- </form> -->
         </li>
       </ul>
 
@@ -104,9 +133,87 @@ router.afterEach((to, from) => {
 </template>
 
 <style scoped>
-.active{
-  color:green;
+.searchBook {
+  width: 100%;
+  border: solid black 2px;
 }
+
+input:placeholder-shown {
+  font-style: italic;
+  min-width: 150px;
+  /* max-width:400px; */
+  display: flex;
+}
+
+.searchBookDropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.searchBookDropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  right: 0;
+  z-index: 1;
+  width: inherit;
+  align-items: stretch;
+  box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.5), 0 2px 4px 1px rgba(0, 0, 0, 0.06);
+  border: solid transparent 4px;
+  border-radius: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 700px;
+  font-size: 12px;
+}
+.searchBookDropdown-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.searchBookDropdown-content::-webkit-scrollbar-track {
+  background: white;
+  border: 1px solid black;
+}
+
+.searchBookDropdown-content::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+.searchBookDropdown:hover .searchBookDropdown-content {
+  display: grid;
+}
+
+/* @media (min-width: 992px) {
+  input{min-width:200px;}
+}*/
+
+ @media (min-width: 991.98px) {
+  .searchBookDropdown-content{
+    width:max-content;
+    /* align-content: ; */
+    width:500px;
+    left:unset;
+    right:0;
+  }
+}
+
+@media (min-width: 1380px) {
+  input{min-width:500px;}
+  .searchBookDropdown-content{
+    width:max-content;
+    width:auto;
+    /* align-content: ; */
+    /* width:500px;
+    right:unset;
+    lef:0; */
+  }
+}
+.active {
+  color: green;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -150,8 +257,8 @@ router.afterEach((to, from) => {
   }
 
   .navbar-expand-md .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    /* padding-right: 0.5rem;
+    padding-left: 0.5rem; */
   }
 
   .navbar-expand-md>.container,
@@ -307,7 +414,8 @@ router.afterEach((to, from) => {
 }
 
 .form-control {
-  color: rgb(117, 37, 7);
+  width:100%;
+  color: rgb(255, 255, 255);
   border: rgb(255, 255, 255, 0.2) solid 8px;
   border-radius: 8px;
   background-color: rgb(255, 255, 255, 0.2);
@@ -378,7 +486,7 @@ router.afterEach((to, from) => {
   position: absolute;
   width: 96%;
   /* display: flex; */
-  padding: 1% 5%;
+  padding: 0.5% 2%;
   border-radius: 8px;
   box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.9), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
 
@@ -406,15 +514,7 @@ router.afterEach((to, from) => {
   list-style-type: none;
 }
 
-.logo.img {
-  height: 2em;
-  will-change: filter;
-}
 
-.logo.img:hover {
-  filter: drop-shadow(0 0 1em#ffffff);
-  /* box-shadow: 1px 1px 2px rgb(255, 255, 255); */
-}
 
 .form-inline {
   display: flex;

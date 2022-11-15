@@ -7,38 +7,49 @@ import AboutFeaturing from './about/AboutFeaturing.vue';
 import $ from 'jquery';
 import { useRouter } from "vue-router";
 
-const router = useRouter();
-router.afterEach((to, from) => $(document).ready(function () {
+var router = useRouter();
+router.afterEach((to, from) => function () {
   console.log("were in about page");
-  if (window.location.href.includes("about")) {
+  if (window.location.href.endsWith("about")) {
+    console.log("were really in about page");
     $("#dinamicTOC").dynamicContentMenu({
       'selectors': "h1 #TOCitem",
     });
-  }
-}));
+  };
+  console.log("were seem to not be about page");
+});
 
 window.onscroll = function () { myFunction() };
 
 
-var navbar;
+var theTOC;
 var sticky;
 
 $(document).ready(function () {
+
+
+  // console.log("were in about page");
+  // if (window.location.href.includes("about")) {
+  //   $("#dinamicTOC").dynamicContentMenu({
+  //     'selectors': "h1 #TOCitem",
+  //   });
+  // }
+  
   // Get the TOC
-  navbar = document.getElementById("dinamicTOC");
+  theTOC = document.getElementById("dinamicTOC");
   // Get the offset position of the TOC
-  sticky = navbar.offsetTop;
+  sticky = theTOC.offsetTop;
 });
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+// Add the sticky class to the theTOC when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
   if (window.pageYOffset >= sticky) {
     console.log("table of contents is sticky");
-    navbar.classList.add("sticky")
+    theTOC.classList.add("sticky")
   } else {
     console.log("table of contents is not sticky");
 
-    navbar.classList.remove("sticky");
+    theTOC.classList.remove("sticky");
   }
 } 
 </script>
@@ -47,7 +58,7 @@ function myFunction() {
   <header>
   </header>
   <div class="aboutPage">
-    <div  style="z-index:19;">
+    <div style="z-index:19;">
       <!-- plugin menu here -->
       <div id="dinamicTOC"></div>
     </div>
@@ -72,11 +83,13 @@ function myFunction() {
   /* margin: 0; */
   width: 100%;
   height: 100%;
+  max-width: 7rem;
 }
 
 .aboutPage {
   display: grid;
   grid-template-columns: 10% 90%;
+  z-index: 1;
 }
 
 .aboutPage.card {
@@ -108,7 +121,7 @@ function myFunction() {
 
 #TOCitem {
   padding: 1.5rem 0;
-  margin:0;
+  margin: 0;
   color: rgb(117, 37, 7);
   font-size: 80;
   font-weight: 600;

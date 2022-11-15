@@ -140,3 +140,12 @@ button:focus-visible {
     background-color: rgba(251, 237, 228);
   }
 }
+.logo.img {
+  height: 2em;
+  will-change: filter;
+}
+
+.logo.img:hover {
+  filter: drop-shadow(0 0 1em#ffffff);
+  /* box-shadow: 1px 1px 2px rgb(255, 255, 255); */
+}

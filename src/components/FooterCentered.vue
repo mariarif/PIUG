@@ -36,7 +36,7 @@ defineProps({
       { href: "/contact", name: "Contact" },
       { href: "https://www.instagram.com/booksforallindia", name: "Instagram" },
       { href: "https://www.facebook.com/BooksForAllInitiative", name: "Facebook" },
-      { href: "https://www.creative-tim.com/license", name: "License" },
+      { href: "https://www.creative-tim.com/license", name: "Youtube" },
     ],
   },
 });

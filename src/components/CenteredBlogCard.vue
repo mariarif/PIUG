@@ -1,8 +1,13 @@
 <script setup>
+import Video from '@/components/Video.vue';
 defineProps({
   image: {
     type: String,
-    required: true,
+    optional: true,
+  },
+  video: {
+    type: String,
+    optional: true,
   },
   title: {
     type: String,
@@ -26,10 +31,14 @@ defineProps({
 </script>
 <template>
   <div class="card">
-    <div class="card-header p-0 position-relative mt-n4 ml-3 mr-3 mt-3 z-index-2">
-      <a :href="action.route" class="d-block blur-shadow-image">
-        <img :src="image" style="max-height:400px ;" :alt="title" class="img-fluid border-radius-lg" />
+    <div class="card-header p-0 position-relative mt-n4 ml-3 mr-3 mt-3 z-index-2" style="background-color:rgb(117, 37, 7);">
+      <a v-if="image!=undefined" :href="action.route" class="d-block blur-shadow-image">
+        <img  :src="image" style="max-height:400px" :alt="title"
+          class="img-fluid border-radius-lg" />
       </a>
+      <!-- <a > -->
+        <Video v-else-if="video!=undefined" :mp4="video" class="border-radius-lg"></Video>
+      <!-- </a> -->
     </div>
     <button type="button" class="btn btn-sm ml-3 mr-3" :class="action.color">
       {{ action.label }}
@@ -50,9 +59,9 @@ defineProps({
   color: rgb(255, 255, 255);
   font-weight: 600;
   border-radius: 8px;
-  margin: 5px 0; 
+  margin: 5px 0;
   color: rgba(255, 255, 255);
-  
+
   text-shadow: 1px 1px 4px #000000;
   font-size: x-large;
   font-weight: 600;
