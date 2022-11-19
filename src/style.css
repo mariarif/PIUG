@@ -32,7 +32,10 @@ a {
   color: #ffffff;
   text-decoration: inherit;
 }
-
+.bb-3-dark-orange{
+  /* border-top:rgb(117, 37, 7) 3px solid; */
+  border-bottom:rgb(117, 37, 7) 3px solid;
+}
 a:hover {
   color: #dfe7e4;
 }
@@ -60,20 +63,22 @@ h1 {
 .text-orange{
   font-weight: 600;
   font-family: 'Coustard', serif;
-  color: rgb(117, 37, 7);
+  color:rgb(243, 108, 36) ;
 }
 .text-dark-orange{
-  color:rgb(243, 108, 36);
+  color:rgb(117, 37, 7);
   font-family: 'Coustard', serif;
   font-weight: 800;
 }
-button {
+.btn {
   border-radius: 8px;
   border: 4px solid transparent;
   padding: 0.6em 1.2em;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 400;
   font-family: inherit;
+  color:rgb(117, 37, 7);
   background-color: rgb(243, 108, 36);
   box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.5), 0 2px 4px 1px rgba(0, 0, 0, 0.06);
   cursor: pointer;
@@ -87,10 +92,10 @@ button {
   background-color: rgb(251, 192, 153, 0.2);
 }
 .bg-gradient-light{
-  background-image: linear-gradient(195deg, rgba(251, 192, 153, 1) 10%, rgba(251, 207, 178, 1) 25%, rgba(251, 222, 203, 1) 35%, rgba(251, 237, 228, 1) 100%);
+  background-image: linear-gradient(180deg, rgba(251, 192, 153, 1) 10%, rgba(251, 207, 178, 1) 25%, rgba(251, 222, 203, 1) 35%, rgba(251, 237, 228, 1) 100%);
 }
 .bg-gradient-light-reverse{
-  background-image: linear-gradient(-195deg, rgba(251, 192, 153, 1) 10%, rgba(251, 207, 178, 1) 25%, rgba(251, 222, 203, 1) 35%, rgba(251, 237, 228, 1) 100%);
+  background-image: linear-gradient(0deg, rgba(251, 192, 153, 1) 10%, rgba(251, 207, 178, 1) 25%, rgba(251, 222, 203, 1) 35%, rgba(251, 237, 228, 1) 100%);
 }
 .bg-gradient-dark{
   background-image: linear-gradient(195deg, rgb(243, 108, 36) 0%, rgb(117, 37, 7) 100%);
@@ -98,14 +103,16 @@ button {
 .bg-gradient-dark-reverse{
   background-image: linear-gradient(195deg, rgb(117, 37, 7)  0%, rgb(243, 108, 36) 100%);
 }
-button:hover {
-  border-color: #ffffff;
+.btn:hover {
+  /* border-color: #ffffff; */
   color: white;
+  background-color: rgb(243, 108, 36);
+
   box-shadow: 0 4px 6px 1px rgba(255, 255, 255, 0.9), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
 }
 
-button:focus,
-button:focus-visible {
+.btn:focus,
+.btn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 

@@ -19,28 +19,32 @@ import FooterCentered from "./components/FooterCentered.vue";
 <template>
   <div class="app-content">
     <div class="content">
-      <div class="app-navbar" >
+      <div class="app-navbar">
         <Navbar />
       </div>
-      <div style="padding-top:2%; z-index:1;">
+      <div style="padding-top:2%; z-index:0;">
         <Router-View />
       </div>
     </div>
   </div>
-  <div class="divider"></div>
-  <FooterCentered />
+  <div style="position:relative; z-index: 19;">
+    <FooterCentered />
+  </div>
+  <!-- <div class="divider"></div> -->
+
 </template>
 <style scoped>
-.divider{
-  width:90%;
-  display: inline-flex ;
-  background:  rgb(117, 37, 7);
-  height:4px;
-  
+.divider {
+  width: 90%;
+  display: inline-flex;
+  background: rgb(117, 37, 7);
+  height: 4px;
+
 }
+
 .app-navbar {
   padding-bottom: 80px;
-  z-index:10;
+  z-index: 10;
   /* position:fixed; */
 }
 
@@ -51,7 +55,7 @@ a {
 .content {
   position: relative;
   padding: 2% 2%;
-  
+
 }
 
 .app-bg {

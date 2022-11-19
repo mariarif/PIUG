@@ -1,6 +1,13 @@
 <script setup>
 import Video from '@/components/Video.vue';
+import { onMounted, onUnmounted } from 'vue';
+import { ref, toRefs } from 'vue';
+import router from '../router';
 defineProps({
+  bookId:{
+    type: String,
+    default: "00",
+  },
   image: {
     type: String,
     optional: true,
@@ -28,25 +35,43 @@ defineProps({
     }),
   },
 });
+let cardheaderwidth = 300;
+onMounted(() => {
+  window.addEventListener('resize', handleResize);
+  cardheaderwidth = document.getElementById('myCardHeader').clientWidth;
+
+});
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+});
+function handleResize(event) {
+  if (document.getElementById('myCardHeader')) {
+    cardheaderwidth = document.getElementById('myCardHeader').clientWidth;
+    console.log("here the width is", cardheaderwidth);
+  }
+};
+async function handleClick(i) {
+
+  if (i!=="00") {
+    console.log(i.value);
+    router.push(`/book/${i}`);
+  }
+};
+
 </script>
 <template>
   <div class="card">
-    <div class="card-header p-0 position-relative mt-n4 ml-3 mr-3 mt-3 z-index-2" style="background-color:rgb(117, 37, 7);">
-      <a v-if="image!=undefined" :href="action.route" class="d-block blur-shadow-image">
-        <img  :src="image" style="max-height:400px" :alt="title"
-          class="img-fluid border-radius-lg" />
+    <div id="myCardHeader" class="card-header position-relative mt-n4 ml-3 mr-3 mt-3 z-index-2">
+      <a v-if="image != undefined" :href="action.route" class="d-block blur-shadow-image">
+        <img :src="image" style="max-height:400px" :alt="title" class="img-fluid border-radius-lg" />
       </a>
-      <!-- <a > -->
-        <Video v-else-if="video!=undefined" :mp4="video" class="border-radius-lg"></Video>
-      <!-- </a> -->
+      <Video v-else-if="video != undefined" :mp4="video" class="border-radius-lg" :width="cardheaderwidth"></Video>
     </div>
-    <button type="button" class="btn btn-sm ml-3 mr-3" :class="action.color">
+    <button type="button" class="btn btn-sm ml-3 mr-3" :class="action.color" @click=handleClick(bookId)>
       {{ action.label }}
     </button>
     <div class="card-body text-center ml-3 mr-3 mb-3">
-      <!-- <h4 class="font-weight-normal"> -->
       <a class="book-title" href="javascript:;">{{ title }}</a>
-      <!-- </h4> -->
       <p class="mb-0">
         {{ description }}
       </p>
@@ -63,7 +88,6 @@ defineProps({
   color: rgba(255, 255, 255);
 
   text-shadow: 1px 1px 4px #000000;
-  font-size: x-large;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
@@ -73,12 +97,11 @@ defineProps({
   background-color: #ec4506;
 }
 
-.btn.btn-sm:hover {
+/* .btn.btn-sm:hover {
   border-color: rgb(117, 37, 7);
   color: white;
-  /* padding: 5px 0; */
   box-shadow: 0 4px 6px 1px rgba(117, 37, 7, 0.9), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
-}
+} */
 
 .ml-3 {
   margin-left: 1rem !important;
@@ -117,11 +140,12 @@ defineProps({
   --bs-card-inner-border-radius: 0.75rem;
   --bs-card-cap-padding-y: 0.5rem;
   --bs-card-cap-padding-x: 1rem;
-  --bs-card-cap-bg: #fff;
+  --bs-card-cap-bg: rgba(255, 255, 255, 0.6);
+  ;
   --bs-card-cap-color: ;
   --bs-card-height: 40rem;
   --bs-card-color: ;
-  --bs-card-bg: #fff;
+  --bs-card-bg: rgba(255, 255, 255, 0.6);
   --bs-card-img-overlay-padding: 1rem;
   --bs-card-group-margin: 0.75rem;
   position: relative;
@@ -360,7 +384,7 @@ defineProps({
 
 .card .card-header {
   padding: 1.5rem;
-  background-color: rgb(254, 254, 254);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: inherit;
   box-shadow: 0 4px 6px -1px rgba(104, 82, 67, 0.3), 0 2px 4px -1px rgb(104, 82, 67, 0.02);
   transform: translate3d(0, 0, 0);
@@ -472,69 +496,6 @@ defineProps({
 
 .card.card-background.card-background-mask-primary:after {
   background-image: linear-gradient(195deg, #EC407A 0%, #D81B60 100%);
-  opacity: 0.85;
-}
-
-.card.card-background.card-background-mask-secondary:before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.card.card-background.card-background-mask-secondary:after {
-  background-image: linear-gradient(195deg, #747b8a 0%, #495361 100%);
-  opacity: 0.85;
-}
-
-.card.card-background.card-background-mask-success:before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.card.card-background.card-background-mask-success:after {
-  background-image: linear-gradient(195deg, #66BB6A 0%, #43A047 100%);
-  opacity: 0.85;
-}
-
-.card.card-background.card-background-mask-info:before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.card.card-background.card-background-mask-info:after {
-  background-image: linear-gradient(195deg, #49a3f1 0%, #1A73E8 100%);
-  opacity: 0.85;
-}
-
-.card.card-background.card-background-mask-warning:before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.card.card-background.card-background-mask-warning:after {
-  background-image: linear-gradient(195deg, #FFA726 0%, #FB8C00 100%);
-  opacity: 0.85;
-}
-
-.card.card-background.card-background-mask-danger:before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.card.card-background.card-background-mask-danger:after {
-  background-image: linear-gradient(195deg, #EF5350 0%, #E53935 100%);
-  opacity: 0.85;
-}
-
-.card.card-background.card-background-mask-light:before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.card.card-background.card-background-mask-light:after {
-  background-image: linear-gradient(195deg, #EBEFF4 0%, #CED4DA 100%);
-  opacity: 0.85;
-}
-
-.card.card-background.card-background-mask-dark:before {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.card.card-background.card-background-mask-dark:after {
-  background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
   opacity: 0.85;
 }
 

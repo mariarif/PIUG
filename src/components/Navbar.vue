@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router';
 import { ref, reactive, computed, watch } from 'vue';
 import { useRouter } from "vue-router";
-import { getAllBooks } from '../views/browse/getAllBooks';
+import { getAllBooks } from '../assets/js/getAllBooks';
 import SearchedBookItem from './SearchedBookItem.vue';
 var loc = computed(() => window.location.href);
 
@@ -464,7 +464,7 @@ input:placeholder-shown {
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.75rem;
   --bs-navbar-toggler-font-size: 1.25rem;
-  --bs-navbar-toggler-icon-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23344767' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.8);
   --bs-navbar-toggler-border-radius: 0.375rem;
   --bs-navbar-toggler-focus-width: 0.25rem;

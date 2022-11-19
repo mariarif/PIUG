@@ -4,7 +4,7 @@ import DefaultCounterCard from "../../components/DefaultCounterCard.vue";
 import { RouterLink } from "vue-router";
 </script>
 <template>
-  <section class="pt-4 pb-6 bg-gradient-light" id="count-stats">
+  <section class="pt-4 pb-6 bg-gradient-light-reverse bb-3-dark-orange" id="count-stats">
     <div class="container">
       <div class="row mb-7">
         <div class="col-lg-2 col-md-4 col-6 mb-4">
@@ -44,11 +44,11 @@ import { RouterLink } from "vue-router";
             :duration="3000" />
         </div>
         <div class="col-md-3">
-          <DefaultCounterCard title="Hours" description="That meets quality standards required by our users"
+          <DefaultCounterCard title="Hours" description="Invested to meet reader's expectations"
             :count="3400" suffix="+" :duration="3000" />
         </div>
         <div class="col-md-3">
-          <DefaultCounterCard title="Support" description="Actively engage team members that finishes on time"
+          <DefaultCounterCard title="Support" description="To actively engage team members"
             :count="24" suffix="/7" :duration="4000" />
         </div>
       </div>

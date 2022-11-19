@@ -10,7 +10,7 @@ import marquez from "../../assets/images/ivana-square.jpg";
 </script>
 
 <template>
-  <section class="pb-5 position-relative bg-gradient-light mx-n3">
+  <section class="pb-5 position-relative bg-gradient-light-reverse mx-n3 bb-3-dark-orange">
     <div class="container">
       <div class="row">
         <div class="col-md-8 text-start mt-2">

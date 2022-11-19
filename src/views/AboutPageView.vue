@@ -4,21 +4,13 @@ import AboutNewsletter from './about/AboutNewsletter.vue'
 import AboutTeam from './about/AboutTeam.vue';
 import AboutInformation from './about/AboutInformation.vue';
 import AboutFeaturing from './about/AboutFeaturing.vue';
+import { initialiseTheToc as initialiseTheToc} from '../assets/js/initialiseTheToc.js'
 import $ from 'jquery';
 import { useRouter } from "vue-router";
 
-var router = useRouter();
-router.afterEach((to, from) => function () {
-  console.log("were in about page");
-  if (window.location.href.endsWith("about")) {
-    console.log("were really in about page");
-    $("#dinamicTOC").dynamicContentMenu({
-      'selectors': "h1 #TOCitem",
-    });
-  };
-  console.log("were seem to not be about page");
-});
 
+
+var router = useRouter();
 window.onscroll = function () { myFunction() };
 
 
@@ -26,15 +18,7 @@ var theTOC;
 var sticky;
 
 $(document).ready(function () {
-
-
-  // console.log("were in about page");
-  // if (window.location.href.includes("about")) {
-  //   $("#dinamicTOC").dynamicContentMenu({
-  //     'selectors': "h1 #TOCitem",
-  //   });
-  // }
-  
+  initialiseTheToc();
   // Get the TOC
   theTOC = document.getElementById("dinamicTOC");
   // Get the offset position of the TOC
@@ -58,7 +42,7 @@ function myFunction() {
   <header>
   </header>
   <div class="aboutPage">
-    <div style="z-index:19;">
+    <div style="z-index:18;">
       <!-- plugin menu here -->
       <div id="dinamicTOC"></div>
     </div>
@@ -81,7 +65,7 @@ function myFunction() {
 .dynamicContentMenu {
   /* max-width: 15%; */
   /* margin: 0; */
-  width: 100%;
+  width: 7rem;
   height: 100%;
   max-width: 7rem;
 }
@@ -89,7 +73,6 @@ function myFunction() {
 .aboutPage {
   display: grid;
   grid-template-columns: 10% 90%;
-  z-index: 1;
 }
 
 .aboutPage.card {
@@ -105,7 +88,7 @@ function myFunction() {
   /* display: block; */
   /* background-color:rgb(117, 37, 7); */
   /* min-width: 300px; */
-  width: 100%;
+  width: 7rem;
 }
 
 /* 
@@ -123,7 +106,7 @@ function myFunction() {
   padding: 1.5rem 0;
   margin: 0;
   color: rgb(117, 37, 7);
-  font-size: 80;
+  font-size: 40px;
   font-weight: 600;
   font-family: 'Coustard', serif;
   text-decoration: none;

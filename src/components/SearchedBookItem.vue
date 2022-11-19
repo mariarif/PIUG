@@ -2,7 +2,6 @@
 import { RouterLink, RouterView } from "vue-router";
 import { ref } from "vue";
 import router from "../router/index.js";
-// import { getDateOfPosting } from "../utils/getDateOfPosting";
 const props = defineProps({
   book: {
     id: Number,
@@ -19,12 +18,11 @@ const props = defineProps({
   searchBook: String,
 });
 
-// const dateString = ref(getDateOfPosting(props.book.dateOfPosting));
 
-async function goToIdeaPageHandler(ideaId) {
+async function goToBookPageHandler(bookId) {
   // router.push({ name: "ideaPage", params: { id: ideaId } });
-  // router.push(`/ideaPage/${ideaId}`);
-  console.log(`going to /ideaPage/${ideaId}`);
+  router.push(`/book/${bookId}`);
+  console.log(`going to /book/${bookId}`);
 }
 </script>
 
@@ -34,31 +32,25 @@ async function goToIdeaPageHandler(ideaId) {
       <div class="authorImg"></div>
       <div class="titleAndInfo">
         <div class="title">
-          <span @click="goToIdeaPageHandler(props.book.id)">{{
-            props.book.title
+          <span @click="goToBookPageHandler(props.book.id)">{{
+              props.book.title
           }}</span>
         </div>
         <div class="info">
-          <div
-            class="name"
-            style=" display: inline-block;
+          <div class="name" style=" display: inline-block;
               text-align: left;
               width: 100%;
               height: 100%;
-            "
-          >
+            ">
             {{ props.book.author }}
           </div>
-          <div
-            class="date"
-            style="
+          <div class="date" style="
               display: inline-block;
               text-align: right;
               width: 100%;
               height: 100%;
-            "
-          >
-          {{ props.book.dateOfPosting }}
+            ">
+            {{ props.book.dateOfPosting }}
           </div>
         </div>
       </div>
@@ -110,6 +102,7 @@ async function goToIdeaPageHandler(ideaId) {
   font-size: 20px;
   font-weight: 500;
 }
+
 .title:hover span {
   font-weight: 900;
   cursor: pointer;

@@ -1,6 +1,5 @@
 <script setup>
 // import Vue from 'vue';
-import Embed from 'v-video-embed';
 import { RouterLink } from 'vue-router';
 import BooksForAllLinks from '../components/BooksForAllLinks.vue';
 import Slider from '../components/Slider.vue'
@@ -21,8 +20,9 @@ var imagesSlider=["src/assets/images/stackofbooks.jpg",
       <p class="text-orange bg-translucide-white">Find new information about your favourite book or discover new ones!</p>
     </div>
     <div>
-      <BooksForAllLinks msg="Books for all" />
-      <video-embed css="embed-responsive-16by9" :params="{autoplay: 1}" src="https://www.youtube.com/watch?v=s4ObxcdXoFE"></video-embed>
+      <!-- <BooksForAllLinks msg="Books for all" /> -->
+      <RouterLink to="/browse/all"><button class="btn">Click here to start browsing!</button></RouterLink>
+
     </div>
   </div>
 </template>

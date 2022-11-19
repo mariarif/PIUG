@@ -45,7 +45,7 @@ export default {
         :class="`${
           typeof icon == 'object'
             ? `text-${icon.color} text-${icon.size}`
-            : 'text-success text-3xl'
+            : 'text-orange text-3xl'
         }`"
         >{{ typeof icon == "object" ? icon.component : icon }}</i
       >
@@ -63,3 +63,9 @@ export default {
     </div>
   </div>
 </template>
+<style scoped>
+
+.info{
+  color:rgb(117, 37, 7);
+  }
+</style>

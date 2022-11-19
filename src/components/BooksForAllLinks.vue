@@ -23,7 +23,6 @@ const count = ref(0)
       </p>
     </div>
 
-    <RouterLink to="/shop"><button>Click here to start browsing!</button></RouterLink>
 
 
   </div>
