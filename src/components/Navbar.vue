@@ -78,7 +78,7 @@ const resultBooks = computed(() => {
           <!-- </a> -->
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/browse/bestellers">Browse all
+          <RouterLink class="nav-link" to="/browse/bestRating">Browse all
           </RouterLink>
         </li>
         <li class="nav-item dropdown">
@@ -87,20 +87,20 @@ const resultBooks = computed(() => {
             Browse by category
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/browse/cf">Contemporary Fiction</a>
-            <a class="dropdown-item" href="/browse/hf">Historical Fiction</a>
-            <a class="dropdown-item" href="/browse/sffh">Science Fiction, Fantasy & Horror</a>
-            <a class="dropdown-item" href="/browse/gnm">Graphic Novels & Manga</a>
-            <a class="dropdown-item" href="/browse/r">Romance</a>
-            <a class="dropdown-item" href="/browse/tya">Teen & Young Adult</a>
+            <a class="dropdown-item" href="/browse/CF">Contemporary Fiction</a>
+            <a class="dropdown-item" href="/browse/C">Classics</a>
+            <a class="dropdown-item" href="/browse/HF">Historical Fiction</a>
+            <a class="dropdown-item" href="/browse/SFFH">Science Fiction, Fantasy & Horror</a>
+            <a class="dropdown-item" href="/browse/GNM">Graphic Novels & Manga</a>
+            <a class="dropdown-item" href="/browse/R">Romance</a>
+            <a class="dropdown-item" href="/browse/TYA">Teen & Young Adult</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/browse/n">Nonfiction</a>
-            <a class="dropdown-item" href="/browse/b">Biography</a>
-            <a class="dropdown-item" href="/browse/pd">Personal developement</a>
-            <a class="dropdown-item" href="/browse/h">Health</a>
-            <a class="dropdown-item" href="/browse/s">Spirituality</a>
-            <a class="dropdown-item" href="/browse/fd">Food & Drinks</a>
-            <a class="dropdown-item" href="/browse/e">Entertainment</a>
+            <a class="dropdown-item" href="/browse/B">Biography</a>
+            <a class="dropdown-item" href="/browse/PD">Personal developement</a>
+            <a class="dropdown-item" href="/browse/H">Health</a>
+            <a class="dropdown-item" href="/browse/S">Spirituality</a>
+            <a class="dropdown-item" href="/browse/FD">Food & Drinks</a>
+            <a class="dropdown-item" href="/browse/E">Entertainment</a>
           </div>
         </li>
         <!-- <li class="nav-item">
@@ -346,11 +346,6 @@ input:placeholder-shown {
   background-color: #ec4306;
 }
 
-.dropdown-item {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
 
 #navbarDropdown:focus {
   box-shadow: none;
@@ -445,7 +440,7 @@ input:placeholder-shown {
   text-decoration: none;
   white-space: nowrap;
   border-radius: 4px;
-  background-color: #ec4506;
+  background-color: rgb(243, 108, 36);
 }
 
 .navbar {
@@ -521,4 +516,5 @@ input:placeholder-shown {
   position: relative;
   align-self: left;
 }
+
 </style>

@@ -3,7 +3,7 @@ import { onMounted } from "vue";
 //Vue Material Kit 2 components
 import MaterialInput from "../../components/MaterialInput.vue";
 import MaterialButton from "../../components/MaterialButton.vue";
-
+import $ from 'jquery';
 // material-input
 import setMaterialInput from "../../assets/js/material-input";
 onMounted(() => {
@@ -12,7 +12,7 @@ onMounted(() => {
 
 
 function buttonClicked() {
-  $gtag.event('latest-click', {
+  window.gtag.event('latest-click', {
     'event_category': 'about',
     'event_label': 'Subscribe-to-newsletter',
     'value': 1
@@ -24,11 +24,11 @@ function buttonClicked() {
   <section class="py-5 bg-gradient-light-reverse bb-3-dark-orange">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-6 m-auto 
+text-dark-orange">
           <h4>Be the first to see the news</h4>
           <p class="mb-4">
-            Your company may not be in the software business, but eventually, a
-            software company will be in your business.
+           Get the latest informations about your favourite books.
           </p>
           <div class="row">
             <!-- <div class="col-8">
@@ -79,10 +79,10 @@ function buttonClicked() {
   font-weight: 400;
 }
 
-.btn {
+/* .btn {
   background-color: rgb(243, 108, 36);
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
   font-weight: 400;
-}
+} */
 </style>

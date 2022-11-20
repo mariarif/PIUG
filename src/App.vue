@@ -14,6 +14,29 @@ import FooterCentered from "./components/FooterCentered.vue";
 //     navbar.classList.remove("sticky");
 //   }
 // } 
+
+let scrollToTopBtn;
+//  = document.getElementById("scrollToTopBtn");
+
+$(document).ready(function () {
+  scrollToTopBtn = document.getElementById("scrollToTopBtn");
+});
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 </script>
 
 <template>
@@ -27,11 +50,12 @@ import FooterCentered from "./components/FooterCentered.vue";
       </div>
     </div>
   </div>
-  <div style="position:relative; z-index: 19;">
+  <button id="scrollToTopBtn" class="btn"  @click="topFunction()" title="Go to top">Top</button>
+  <div id="footer" style="position:relative; z-index: 19;">
     <FooterCentered />
   </div>
   <!-- <div class="divider"></div> -->
-
+ 
 </template>
 <style scoped>
 .divider {

@@ -2,7 +2,7 @@
 import Video from '@/components/Video.vue';
 import { onMounted, onUnmounted } from 'vue';
 import { ref, toRefs } from 'vue';
-import router from '../router';
+import router from "../router/index.js";
 defineProps({
   bookId:{
     type: String,
@@ -55,6 +55,7 @@ async function handleClick(i) {
   if (i!=="00") {
     console.log(i.value);
     router.push(`/book/${i}`);
+    // location.reload();
   }
 };
 
@@ -81,20 +82,20 @@ async function handleClick(i) {
 </template>
 <style scoped>
 .btn.btn-sm {
-  color: rgb(255, 255, 255);
+  /* color: rgb(255, 255, 255);
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 8px; */
   margin: 5px 0;
-  color: rgba(255, 255, 255);
+  /* color: rgba(255, 255, 255);
 
   text-shadow: 1px 1px 4px #000000;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   text-decoration: none;
-  white-space: nowrap;
+  white-space: nowrap; */
   /* border-radius: 4px; */
-  background-color: #ec4506;
+  /* background-color: #ec4506; */
 }
 
 /* .btn.btn-sm:hover {
@@ -120,7 +121,7 @@ async function handleClick(i) {
 }
 
 .book-title {
-  font-size: x-large;
+  font-size: 20px;
   font-weight: 600;
   font-family: 'Coustard', serif;
   color: rgb(117, 37, 7);

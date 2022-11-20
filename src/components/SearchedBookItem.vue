@@ -1,10 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import { ref } from "vue";
-import router from "../router/index.js";
+// import router from "../router/index.js";
+import { useRouter } from "vue-router";
 const props = defineProps({
   book: {
-    id: Number,
+    bookId: Number,
     title: String,
     series: {
       name: String,
@@ -18,11 +19,15 @@ const props = defineProps({
   searchBook: String,
 });
 
-
+const router = useRouter();
 async function goToBookPageHandler(bookId) {
-  // router.push({ name: "ideaPage", params: { id: ideaId } });
-  router.push(`/book/${bookId}`);
   console.log(`going to /book/${bookId}`);
+  if (window.location.href.includes("book")) {
+    await router.push({ name: "book", params: { id: bookId } });
+    router.go(0);
+  }
+  await router.push({ name: "book", params: { id: bookId } });
+  // router.push(`/book/${bookId}`);
 }
 </script>
 
@@ -32,7 +37,7 @@ async function goToBookPageHandler(bookId) {
       <div class="authorImg"></div>
       <div class="titleAndInfo">
         <div class="title">
-          <span @click="goToBookPageHandler(props.book.id)">{{
+          <span @click="goToBookPageHandler(props.book.bookId)">{{
               props.book.title
           }}</span>
         </div>

@@ -67,6 +67,9 @@ export default {
 <template>
     <section class="pb-5 bg-gradient-light-reverse bb-3-dark-orange">
         <div class="container">
+            <p class=" opacity-8 mb-0 text-dark-orange">
+           If you have any questions, suggetions or you you want to join the team fill in the following form and we will get to you in the shortest time possible.
+          </p>
             <div class="app-advanced p-10">
                 <form :action="FORM_ENDPOINT" @submit="handleSubmit" method="POST" target="_blank"
                     class="w-1/2 mx-auto mt-5">
