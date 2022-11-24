@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router';
 import { ref, reactive, computed, watch } from 'vue';
 import { useRouter } from "vue-router";
-import { getAllBooks } from '../assets/js/getAllBooks';
+import { getAllBooks } from '../assets/js/getAllBooks.js';
 import SearchedBookItem from './SearchedBookItem.vue';
 var loc = computed(() => window.location.href);
 

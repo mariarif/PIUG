@@ -1,7 +1,7 @@
 <script setup>
 import DefaultInfoCard from "../../components/DefaultInfoCard.vue";
 import CenteredBlogCard from "../../components/CenteredBlogCard.vue";
-var videoString="/src/assets/videos/reading-book-outside.mp4";
+var videoString="../assets/videos/reading-book-outside.mp4";
 </script>
 <template>
   <section class="py-7 bg-gradient-light-reverse bb-3-dark-orange">

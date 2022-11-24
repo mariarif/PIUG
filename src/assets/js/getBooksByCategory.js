@@ -1,5 +1,5 @@
-import { getAllBooks as getAllBooks } from "./getAllBooks";
-import { getCategories as getCategories } from "./getCategories";
+import { getAllBooks as getAllBooks } from "./getAllBooks.js";
+import { getCategories as getCategories } from "./getCategories.js";
 export function getBooksByCategory(category) {
     let books = getAllBooks();
     let categories = getCategories();

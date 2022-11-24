@@ -1,4 +1,4 @@
-import { getCategories as getCategories } from "./getCategories";
+import { getCategories as getCategories } from "./getCategories.js";
 export function getCategoryName(categoryId) {
     let categoryName;
     if (categoryId !== "bestRating")
