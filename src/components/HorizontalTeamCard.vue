@@ -28,7 +28,7 @@ defineProps({
       <div class="col-lg-4 col-md-6 col-12 mt-n5">
         <a :href="profile.link">
           <div class="p-3 pe-md-0">
-            <img class="w-100 border-radius-md shadow-lg" max-width="220px" :src="image" :alt="profile.name" />
+            <img class="w-100 border-radius-md shadow-lg teammember"   :src="image" :alt="profile.name" />
           </div>
         </a>
       </div>
@@ -45,6 +45,9 @@ defineProps({
   </div>
 </template>
 <style>
+.teammember{
+  max-height:200px;
+}
 .card.card-profile{
   margin-top: 1.5rem !important;
 margin-bottom: 1.5rem !important;
@@ -100,5 +103,22 @@ img {
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-.5 * var(--bs-gutter-x));
   margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+@media (min-width: 768px){
+.col-md-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}}
+@media (max-width:735px) {
+ .row .col-md-6{
+  width:50%;
+ }
+  .pe-md-0{
+   position:relative;
+    /* align-content: ; */
+    /* width:500px;
+    right:unset;
+    lef:0; */
+  }
 }
 </style>

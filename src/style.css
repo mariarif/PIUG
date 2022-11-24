@@ -89,7 +89,7 @@ h1 {
   font-weight: 600;
   font-family: 'Coustard', serif;
   color:rgb(243, 108, 36) ;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 1px 1px 1px #000000;
 }
 .text-dark-orange{
   color:rgb(117, 37, 7);
@@ -173,7 +173,6 @@ h1 {
   
 }
 #scrollToTopBtn {
-  /* display: none; */
   position: fixed;
   bottom: 20px;
   right: 30px;

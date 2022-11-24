@@ -12,6 +12,6 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(VueGtag, {
-    config: { id: "UA-342769379" }
+    config: { id: "G-5TZTR42DMX" }
 });
 app.mount("#app");

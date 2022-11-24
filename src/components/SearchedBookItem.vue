@@ -15,6 +15,7 @@ const props = defineProps({
     goodreadsRating: Number,
     description: String,
     dateOfPosting: String,
+    imgUrl: String,
   },
   searchBook: String,
 });
@@ -34,7 +35,7 @@ async function goToBookPageHandler(bookId) {
 <template>
   <div class="searchIdeaDropdown-content-item">
     <div class="top">
-      <div class="authorImg"></div>
+      <div class="authorImg"><img :src="props.book.imgUrl.substr(0,3)+props.book.imgUrl.substr(2,props.book.imgUrl.length)" style="width:40px;"/></div>
       <div class="titleAndInfo">
         <div class="title">
           <span @click="goToBookPageHandler(props.book.bookId)">{{
@@ -47,22 +48,10 @@ async function goToBookPageHandler(bookId) {
               width: 100%;
               height: 100%;
             ">
-            {{ props.book.author }}
-          </div>
-          <div class="date" style="
-              display: inline-block;
-              text-align: right;
-              width: 100%;
-              height: 100%;
-            ">
-            {{ props.book.dateOfPosting }}
+            by {{ props.book.author }}
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="description">
-      <p>{{ props.book.description.substr(0, 70) }}</p>
     </div>
   </div>
 </template>
@@ -70,18 +59,23 @@ async function goToBookPageHandler(bookId) {
 .searchIdeaDropdown-content-item {
   display: grid;
   grid-template-rows: 50% 50%;
-  padding: 2%;
+  padding: 0.25rem;
   background-color: transparent;
   border: transparent;
   /* height: 200px; */
   white-space: nowrap;
 }
 
+
+.searchIdeaDropdown-content-item:hover {
+  background-color: rgba(251, 192, 153, 0.2);
+  color:rgb(243, 108, 36);
+}
 .searchIdeaDropdown-content-item button {
   padding: 5px 10px;
   background-color: transparent;
   border-color: transparent;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .top {
@@ -96,7 +90,7 @@ async function goToBookPageHandler(bookId) {
   width: 40px;
   height: 40px;
   border: solid black 1px;
-  background-image: url("../images/booksforall.png");
+  /* background-image: url("../images/booksforall.png"); */
   background-position: center center;
   object-fit: contain;
   background-repeat: no-repeat;
@@ -106,6 +100,7 @@ async function goToBookPageHandler(bookId) {
   display: inline-block;
   font-size: 20px;
   font-weight: 500;
+  white-space:normal;
 }
 
 .title:hover span {

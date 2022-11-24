@@ -34,7 +34,7 @@ export function getCategories() {
         },
         {
             "categoryId": "PD",
-            "name": "Personal developement",
+            "name": "Personal development",
         },
         {
             "categoryId": "H",

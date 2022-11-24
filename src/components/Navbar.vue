@@ -27,12 +27,13 @@ router.afterEach((to, from) => {
     btns[i].addEventListener("click",
       function () {
         var current = document
-          .getElementsByClassName("active");
+          .getElementsByClassName("router-link-active");
 
         current[0].className = current[0]
-          .className.replace(" active", "");
-
-        this.className += " active";
+          .className.replace(" router-link-active", "");
+        current[0].className = current[0]
+          .className.replace(" router-link-exact-active", "");
+        this.className += " router-link-active router-link-exact-active";
       });
   };
 });
@@ -46,15 +47,15 @@ const reactiveBooks = ref(books);
 const resultBooks = computed(() => {
   return reactiveBooks.value.filter(
     (book) =>
-    book.title.toLowerCase().includes(state.searchBook.toLowerCase()) ||
-    // book.description.toLowerCase().includes(state.searchBook.toLowerCase()) ||
-    book.author.toLowerCase().includes(state.searchBook.toLowerCase()) ||
-    book.series.name.toLowerCase().includes(state.searchBook.toLowerCase())
+      book.title.toLowerCase().includes(state.searchBook.toLowerCase()) ||
+      // book.description.toLowerCase().includes(state.searchBook.toLowerCase()) ||
+      book.author.toLowerCase().includes(state.searchBook.toLowerCase()) ||
+      book.series.name.toLowerCase().includes(state.searchBook.toLowerCase())
   );
 });
 </script>
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-texture" id="navbarFix" style="z-index:20;">
+  <nav class="navbar navbar-expand-lg bg-texture position-fixed" id="navbarFix" style="z-index:20;">
     <a class="navbar-brand logo">
       <RouterLink to="/">
         <img src="../assets/images/booksforall-white-smooth.png" class="logo img" alt="BooksForAll logo" />
@@ -96,7 +97,7 @@ const resultBooks = computed(() => {
             <a class="dropdown-item" href="/browse/TYA">Teen & Young Adult</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/browse/B">Biography</a>
-            <a class="dropdown-item" href="/browse/PD">Personal developement</a>
+            <a class="dropdown-item" href="/browse/PD">Personal development</a>
             <a class="dropdown-item" href="/browse/H">Health</a>
             <a class="dropdown-item" href="/browse/S">Spirituality</a>
             <a class="dropdown-item" href="/browse/FD">Food & Drinks</a>
@@ -108,7 +109,7 @@ const resultBooks = computed(() => {
                 </li> -->
         <li class="nav-item">
           <!-- <form class="form-inline my-2 my-lg-0"> -->
-            <div class="searchBookDropdown" style=" width: 100%">
+          <div class="searchBookDropdown" style=" width: 100%">
             <input class="form-control mr-sm-2" type="search" placeholder="Search for book.." aria-label="Search"
               v-model="state.searchBook">
             <!-- <button class="btn my-2 my-sm-0" type="submit">Search</button> -->
@@ -148,39 +149,45 @@ input:placeholder-shown {
 .searchBookDropdown {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: inherit;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: rgb(117, 37, 7);
 }
 
 .searchBookDropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1);
   right: 0;
   z-index: 1;
   width: inherit;
   align-items: stretch;
   box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.5), 0 2px 4px 1px rgba(0, 0, 0, 0.06);
-  border: solid transparent 4px;
+  border: solid transparent 0px;
   border-radius: 8px;
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 700px;
   font-size: 12px;
 }
+
 .searchBookDropdown-content::-webkit-scrollbar {
   width: 8px;
 }
 
 .searchBookDropdown-content::-webkit-scrollbar-track {
-  background: white;
-  border: 1px solid black;
+  background-color: rgba(251, 192, 153, 0.2);
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .searchBookDropdown-content::-webkit-scrollbar-thumb {
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
 }
+
 .searchBookDropdown:hover .searchBookDropdown-content {
   display: grid;
 }
@@ -189,27 +196,31 @@ input:placeholder-shown {
   input{min-width:200px;}
 }*/
 
- @media (min-width: 991.98px) {
-  .searchBookDropdown-content{
-    width:max-content;
+@media (min-width: 991.98px) {
+  .searchBookDropdown-content {
+    width: max-content;
     /* align-content: ; */
-    width:500px;
-    left:unset;
-    right:0;
+    width: 500px;
+    left: unset;
+    right: 0;
   }
 }
 
 @media (min-width: 1380px) {
-  input{min-width:500px;}
-  .searchBookDropdown-content{
-    width:max-content;
-    width:auto;
+  input {
+    min-width: 500px;
+  }
+
+  .searchBookDropdown-content {
+    width: max-content;
+    width: 500px;
     /* align-content: ; */
     /* width:500px;
     right:unset;
     lef:0; */
   }
 }
+
 .active {
   color: green;
 }
@@ -219,7 +230,53 @@ input:placeholder-shown {
   top: 0;
   width: 100%;
 }
+.navbar {
+  --bs-navbar-padding-x: 0;
+  --bs-navbar-padding-y: 0.5rem;
+  --bs-navbar-color: rgba(0, 0, 0, 0.55);
+  --bs-navbar-hover-color: white;
+  --bs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
+  --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
+  --bs-navbar-brand-padding-y: 0.3125rem;
+  --bs-navbar-brand-margin-end: 1rem;
+  --bs-navbar-brand-font-size: 1.25rem;
+  --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
+  --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
+  --bs-navbar-nav-link-padding-x: 0.5rem;
+  --bs-navbar-toggler-padding-y: 0.25rem;
+  --bs-navbar-toggler-padding-x: 0.75rem;
+  --bs-navbar-toggler-font-size: 1.25rem;
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23344767' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.8);
+  --bs-navbar-toggler-border-radius: 0.375rem;
+  --bs-navbar-toggler-focus-width: 0.25rem;
+  --bs-navbar-toggler-transition: box-shadow 0.15s;
 
+  --bs-btn-color: white;
+  --bs-btn-bg: transparent;
+  --bs-btn-font-size: 18px;
+  --bs-btn-font-weight: 700;
+  --bs-btn-border-color: white;
+
+
+  color: white;
+  font-weight: 600;
+  font-family: 'Coustard', serif;
+  font-style: normal;
+  font-size: 18px;
+  /* color: rgb(117, 37, 7); */
+  position: absolute;
+  width: 96%;
+  /* display: flex; */
+  padding: 0.5% 2%;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.9), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
+
+  background-color: rgb(107, 46, 24);
+  /* display: flexbox; */
+  /* z-index: 1; */
+  /* padding-bottom: 10px; */
+}
 @media (max-width: 991.98px) {
 
   .navbar-expand-md>.container,
@@ -343,7 +400,7 @@ input:placeholder-shown {
  */
 
 .navbar-toggler {
-  background-color: #ec4306;
+  background-color: rgb(243, 108, 36);
 }
 
 
@@ -351,25 +408,29 @@ input:placeholder-shown {
   box-shadow: none;
   background-color: transparent;
 }
-
-.navbar-light .navbar-nav .nav-link:focus {
-  color: #ec4306;
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: rgb(243, 108, 36);
+}
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(255, 255, 255);}
+.nav-link:focus {
+  color: rgb(243, 108, 36);
   background-color: rgb(255, 245, 239);
   text-shadow: 1px 1px 2px #000000;
   box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.5), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
 }
 
-.navbar-light .navbar-nav .nav-link:focus:hover {
+.nav-link:focus:hover {
   box-shadow: 0 4px 6px 1px rgba(255, 255, 255, 0.7), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
 }
 
-.navbar-light .navbar-nav .nav-link:hover {
-  color: #ec4306;
+.nav-link:hover {
+  color: rgb(243, 108, 36);
   text-shadow: 1px 1px 2px #000000;
   /* background-color: rgb(255, 245, 239); */
 }
 
-.navbar-light .navbar-nav .nav-link {
+.nav-link {
   color: rgba(255, 255, 255);
   font-size: large;
   font-weight: 600;
@@ -380,17 +441,18 @@ input:placeholder-shown {
   text-shadow: 1px 1px 4px #000000;
 }
 
-/* .router-link-exact-active {
-    font-weight: 700;
-    color: rgb(11, 7, 117);
-    border-radius: 4px;
+.router-link-exact-active  {
+  font-weight: 700;
+  color: rgb(243, 108, 36);
+  border-radius: 4px;
 
-} 
+}
 
 .router-link-exact-active:hover {
-    color: rgb(166, 30, 30);
- } 
+  color: rgb(166, 30, 30);
+}
 
+/* 
 .active {
     font-weight:100;
     color: aquamarine;
@@ -409,7 +471,7 @@ input:placeholder-shown {
 }
 
 .form-control {
-  width:100%;
+  width: 100%;
   color: rgb(255, 255, 255);
   border: rgb(255, 255, 255, 0.2) solid 8px;
   border-radius: 8px;
@@ -443,53 +505,7 @@ input:placeholder-shown {
   background-color: rgb(243, 108, 36);
 }
 
-.navbar {
-  --bs-navbar-padding-x: 0;
-  --bs-navbar-padding-y: 0.5rem;
-  --bs-navbar-color: rgba(0, 0, 0, 0.55);
-  --bs-navbar-hover-color: white;
-  --bs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
-  --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
-  --bs-navbar-brand-padding-y: 0.3125rem;
-  --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 1.25rem;
-  --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
-  --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
-  --bs-navbar-nav-link-padding-x: 0.5rem;
-  --bs-navbar-toggler-padding-y: 0.25rem;
-  --bs-navbar-toggler-padding-x: 0.75rem;
-  --bs-navbar-toggler-font-size: 1.25rem;
-  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23344767' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.8);
-  --bs-navbar-toggler-border-radius: 0.375rem;
-  --bs-navbar-toggler-focus-width: 0.25rem;
-  --bs-navbar-toggler-transition: box-shadow 0.15s;
 
-  --bs-btn-color: white;
-  --bs-btn-bg: transparent;
-  --bs-btn-font-size: 18px;
-  --bs-btn-font-weight: 700;
-  --bs-btn-border-color: white;
-
-
-  color: white;
-  font-weight: 600;
-  font-family: 'Coustard', serif;
-  font-style: normal;
-  font-size: 18px;
-  /* color: rgb(117, 37, 7); */
-  position: absolute;
-  width: 96%;
-  /* display: flex; */
-  padding: 0.5% 2%;
-  border-radius: 8px;
-  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.9), 1px 2px 4px 1px rgba(255, 255, 255, 0.06);
-
-  background-color: rgb(107, 46, 24);
-  /* display: flexbox; */
-  /* z-index: 1; */
-  /* padding-bottom: 10px; */
-}
 
 .collapse.navbar-collapse ul {
   display: flex;
@@ -516,5 +532,4 @@ input:placeholder-shown {
   position: relative;
   align-self: left;
 }
-
 </style>

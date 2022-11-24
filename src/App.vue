@@ -25,7 +25,7 @@ $(document).ready(function () {
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
     scrollToTopBtn.style.display = "block";
   } else {
     scrollToTopBtn.style.display = "none";
@@ -45,7 +45,7 @@ function topFunction() {
       <div class="app-navbar">
         <Navbar />
       </div>
-      <div style="padding-top:2%; z-index:0;">
+      <div style="z-index:0;">
         <Router-View />
       </div>
     </div>
@@ -79,6 +79,7 @@ a {
 .content {
   position: relative;
   padding: 2% 2%;
+  padding-top:0;
 
 }
 

@@ -72,5 +72,6 @@ import marquez from "../../assets/images/ivana-square.jpg";
   font-weight: 500;
   font-family: 'Montserrat', sans-serif;
 }
+
 </style>
 

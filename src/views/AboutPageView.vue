@@ -62,12 +62,17 @@ function myFunction() {
 </template>
 
 <style scoped>
+.sticky{
+  top:70px;
+}
 .dynamicContentMenu {
   /* max-width: 15%; */
   /* margin: 0; */
   width: 7rem;
   height: 100%;
   max-width: 7rem;
+  
+  text-align: left;
 }
 
 .aboutPage {
@@ -82,15 +87,36 @@ function myFunction() {
 }
 
 .dinamicTOC {
+  /* margin-top:45px; */
   position: fixed;
-  padding: 0;
-  margin: o;
+  padding: none;
+  margin: 0;
   /* display: block; */
   /* background-color:rgb(117, 37, 7); */
   /* min-width: 300px; */
   width: 7rem;
 }
+@media (max-width: 991.98px) {
 
+.dinamicTOC {
+  width:5rem;
+}
+.dynamicContentMenu {
+  
+  width: 5rem;
+  margin:0px;
+  font-size: 12px;
+  text-align: left;
+}
+}@media (min-width: 992px) {
+
+.dinamicTOC {
+  width:5rem;
+}
+.dynamicContentMenu {
+  margin-top:0px;
+}
+}
 /* 
 .col-md-1 {
   position: relative;

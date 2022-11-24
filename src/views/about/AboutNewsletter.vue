@@ -1,8 +1,10 @@
 <script setup>
 import { onMounted } from "vue";
+import { ref } from "vue";
 //Vue Material Kit 2 components
 import MaterialInput from "../../components/MaterialInput.vue";
 import MaterialButton from "../../components/MaterialButton.vue";
+import Tooltip from "../../components/Tooltip.vue";
 import $ from 'jquery';
 // material-input
 import setMaterialInput from "../../assets/js/material-input";
@@ -12,13 +14,14 @@ onMounted(() => {
 
 
 function buttonClicked() {
+  status.value = "1"
   window.gtag.event('latest-click', {
     'event_category': 'about',
     'event_label': 'Subscribe-to-newsletter',
     'value': 1
   })
 }
-
+const status = ref();
 </script>
 <template>
   <section class="py-5 bg-gradient-light-reverse bb-3-dark-orange">
@@ -28,7 +31,7 @@ function buttonClicked() {
 text-dark-orange">
           <h4>Be the first to see the news</h4>
           <p class="mb-4">
-           Get the latest informations about your favourite books.
+            Get the latest informations about your favourite books.
           </p>
           <div class="row">
             <!-- <div class="col-8">
@@ -39,10 +42,9 @@ text-dark-orange">
                 type="email"
               />
             </div> -->
-            <div class="col-8 mb-3 pt-0">
+            <div class=" mb-3 pt-0">
               <input type="email" placeholder="Email" name="email" class="
-              
-                        px-3
+              px-3
               py-3
               text-dark-orange
               relative
@@ -56,10 +58,14 @@ text-dark-orange">
               focus:ring
               w-full
             " required />
+              <Tooltip message="Write your email!" />
             </div>
-            <div class="col-4 ps-0">
-              <MaterialButton variant="gradient" color="success" class="mb-0 position-relative z-index-2"
-                @click="buttonClicked">Subscribe</MaterialButton>
+            <div class=" ps-0">
+              <MaterialButton variant="gradient" color="success" class="mb-0 position-relative " @click="buttonClicked">
+                Subscribe</MaterialButton>
+            </div>
+            <div v-if="status" class="text-center mt-10 text-dark-orange">
+              <h2 class="text-2xl">Thank you for subscribing!</h2>
             </div>
           </div>
         </div>
@@ -74,6 +80,11 @@ text-dark-orange">
   </section>
 </template>
 <style scoped>
+.is-focused input, input:focus {
+  outline: 2px solid rgb(243, 108, 36);
+  border-radius: 3px;
+}
+
 .text-dark-orange {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;

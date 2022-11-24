@@ -60,4 +60,14 @@ height: 100%;
 .tooltip:hover:before {
     display: block;
 }
+@media (max-width:815px) {
+ .tooltip:before{
+    /* move to right */
+    left: -210px;
+    margin-left: 0;
+    /* right:100%; */
+    /* margin-right:10px; */
+    /* and add a small left margin */
+ }
+}
 </style>

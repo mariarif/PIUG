@@ -100,6 +100,13 @@ function buttonClicked() {
                         </div>
                     </div>
                     <div class="description m-auto">
+                        <p class="text-orange pl-4" href="javascript:;">Date of publishing: 
+                        <p class="rating">
+                            {{ thisBook.dateOfPosting }}
+                        </p>
+                        </p>
+                    </div>
+                    <div class="description m-auto">
                         <p class="text-orange pl-4" href="javascript:;">Goodreads Rating:
                         <p class="rating">
                             {{ thisBook.goodreadsRating }} / 5

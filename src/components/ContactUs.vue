@@ -6,6 +6,7 @@ export default {
         const FORM_ENDPOINT = ref("endpointUrl");
         const status = ref();
         function handleSubmit(e) {
+            status.value= "We'll be in touch soon.";
             e.preventDefault();
             // Anything you need to inject dynamically
             const injectedData = {
@@ -133,8 +134,8 @@ export default {
                         </button>
                     </div>
                 </form>
-                <div v-if="status" class="text-center mt-10">
-                    <h2 class="text-2xl">Thanks you!</h2>
+                <div v-if="status" class="text-center mt-10 text-dark-orange">
+                    <h2 class="text-2xl">Thank you!</h2>
                     <div class="text-md">{{ status }}</div>
                 </div>
             </div>
