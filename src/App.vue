@@ -96,6 +96,6 @@ a {
 .app-content {
   overflow: hidden;
   position: relative;
-  min-height: 1000px;
+  min-height: 900px;
 }
 </style>
